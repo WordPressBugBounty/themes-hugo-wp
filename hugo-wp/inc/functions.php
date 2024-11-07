@@ -147,11 +147,15 @@ hugo_wp_theme()
         'flex-width' 	=> true,
         'width' 		=> 150,
         'height' 		=> 70,
-    ))
-    ->register_menus(array(
+    ));
+
+add_action('init', function() {
+    hugo_wp_theme()   ->register_menus(array(
         'header-menu' => esc_html__('Header Menu', 'hugo-wp'),
         'footer-menu' => esc_html__('Footer Menu', 'hugo-wp'),
     ));
+
+}, 1);
 
 
 add_action('widgets_init', 'hugo_wp_register_sidebars');
