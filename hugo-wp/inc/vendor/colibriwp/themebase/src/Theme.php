@@ -39,7 +39,7 @@ class Theme {
 
         add_action( 'after_setup_theme', array( $this, 'afterSetup' ), 20 );
         add_action('init', array($this, 'onInitHook'));
-
+        add_action('widgets_init', array($this, 'doInitWidgets'));
     }
 
     public static function slug() {
@@ -284,7 +284,7 @@ class Theme {
     public function onInitHook() {
         $this->registerMenus();
 
-        $this->doInitWidgets();
+
         add_filter( 'dynamic_sidebar_params', array( $this, 'wrapWidgetsContent' ) );
         // hooks for handling the widget content wrapping
         add_action( 'register_sidebar', array( $this, 'modifyRegisteredSidebar' ) );
